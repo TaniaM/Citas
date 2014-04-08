@@ -1,0 +1,88 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core">
+    <ui:param name="titulo" value="FERIA DE LA SALUD"/>
+    <h:head>
+        <title>#{titulo}</title>
+        <h:outputStylesheet library="css" name="estilos.css"/>
+    </h:head>
+    <h:body >
+        <h:form>
+            
+            
+            
+            <h:panelGrid columns="4" style="margin: 0 auto;" class="imagen">
+                <h:graphicImage library="img" name="citas_medicas.jpg"/>
+                <h:panelGroup/>
+                <h:panelGroup/>
+                <h2 align="center">Citas</h2>
+            </h:panelGrid>
+            
+            
+            <h:commandButton value="Nueva cita" accesskey="N" 
+                             action="#{ctrlCita.editaNuevo()}"  class="boton"/>
+            
+            <h:messages layout="table" infoClass="info" infoStyle="style"/>
+            <h:dataTable cellpadding="6" cellspacing="0" 
+                         rendered="#{not empty ctrlCitas.instancias}"
+                         var="c" value="#{ctrlCitas.instancias}" class="datagrid" >
+                <h:column class="datagridtableth,textocentrado" >
+                    <f:facet id="header" name="header" >Nombre</f:facet>
+                    <h:commandLink value="#{c.nombre}"
+                                   action="#{ctrlCita.detalle(c)}"/>
+                </h:column>
+                
+                <h:column class="datagridtableth,textocentrado">
+                    <f:facet name="header">Fecha de nacimiento</f:facet>
+                    <h:outputText value="#{c.fechaNac}" >
+                       <f:convertDateTime for="value" type="date" 
+                                           locale="es-MX" 
+                                           timeZone="America/Mexico_City" />
+                    </h:outputText>
+                </h:column>
+                
+                <h:column class="textocentrado" >
+                    <f:facet name="header" class="datagridtableth">Dirección</f:facet>
+                    <h:outputText value="#{c.direccion}"/>
+                </h:column>
+                
+               <h:column class="datagridtableth,textocentrado">
+                    <f:facet name="header" class="datagridtableth,textocentrado">Consultorio</f:facet>
+                    <h:outputText value="#{c.consultorio}" class="textocentrado" />
+                </h:column>
+                
+                <h:column class="datagridtableth">
+                    <f:facet name="header">Cita</f:facet>
+                    <h:outputText value="#{c.cita}" class="textocentrado">
+                    <f:convertDateTime for="value" type="both" 
+                                           timeStyle="short" 
+                                           locale="es-MX" 
+                                           timeZone="America/Mexico_City" />
+                    </h:outputText>
+                 </h:column >
+                
+                    <h:column class="datagridtableth,textocentrado" >
+                    <h:commandButton value="Editar"
+                                     styleClass="boton1"
+                                     action="#{ctrlCita.detalle(c)}"/>
+                    <h:commandButton value="Cancelar cita"
+                                     styleClass="boton1"
+                                     action="#{ctrlCitas.elimina(c)}"
+                                     onclick="return confirm('¿Realmente desea cancelar la cita de ' 
+                                                 + '#{c.nombre} ?' 
+                                                 + 'No podra recuperar la cita hasta que genere una nueva' );"/>
+                    </h:column>
+                
+            </h:dataTable>
+            
+            <ui:fragment rendered="#{empty ctrlCitas.instancias}">
+                <div class="legend"><em>No hay citas registradas</em></div>
+            </ui:fragment>
+           
+        </h:form>
+    </h:body>
+</html>
+

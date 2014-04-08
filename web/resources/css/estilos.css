@@ -1,0 +1,102 @@
+.table, .tabletd, .tabletr {
+    padding:0px;
+    margin:0px;
+    border-spacing: 0px;
+}
+table {
+    border:1px black solid;
+    border-radius:5px;
+    min-width:400px;
+    font-family: Helvetica,Arial;    
+}
+ 
+.tabletd {
+    padding:6px;
+}
+.imagen{ border: none;}
+.textocentrado{text-align: center}
+.titdet {font-family: Helvetica,Arial;
+        font-size: 50px;
+        color: gray;
+        }
+        .detalles{
+            font-family: cursive;
+            font-size: 15px;   
+        }        
+h2{
+    color: #707070;
+    font-family: Candara;
+    font-weight: bold;
+    font-size: 60px;
+    
+}
+
+.boton{
+    font-family: Candara;
+    font-weight: bold;
+    font-size: 30px;
+    color: beige;
+    background: #007ca6;
+    border-radius: 10px;
+    alignment-baseline: central;
+    text-align: center;
+    margin: 10px 10px 10px 120px;
+    
+  
+}
+
+/*:hover da el efecto de realce*/
+.boton:hover{
+    background: #02c1de;  
+}
+
+.boton1{
+    font-family: Candara;
+    font-weight: bold;
+    font-size: 15px;
+    color: beige;
+    background: #007ca6;
+    border-radius: 7px;
+}
+
+.boton1:hover{
+    background: #02c1de;  
+}
+
+/*para los mensajes*/
+.info{color: white; background-color: blue}
+.error{color: white; background-color: red}
+
+.fieldset {
+margin: 10px 100px 50px 100px;
+padding: 0;
+}
+
+.label {
+position: relative;
+clear: left;
+float: left;
+width: 15em;
+margin-right: 5px;
+text-align: right;
+}
+
+.legend {
+font-size: 2em;
+padding: 5px;
+margin-left: 1em;
+color: #C930B9;
+text-align: center;
+font-family: serif,sans-serif;
+font-weight: bold;
+}
+.datagrid {font: normal 18px/150% Arial, Helvetica, sans-serif; background: #fff; 
+          overflow: visible; border: 1px solid #006699; 
+          -webkit-border-radius: 3px; 
+          -moz-border-radius: 3px; 
+          border-radius: 3px; 
+          margin: 10px 100px 50px 100px;         
+}
+
+
+ 

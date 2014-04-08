@@ -1,0 +1,85 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core">
+    <ui:param name="titulo"
+              value="#{ctrlCita.nuevo?'Nueva cita':ctrlCita.modelo.nombre}" class="titdet"/>
+    <h:head>
+        <title>#{titulo}</title>
+        <h:outputStylesheet library="css" name="estilos.css"/>
+    </h:head>
+    <h:body>
+        
+        <h:form class="fieldset">
+            
+            <h:graphicImage library="img" name="citas_medicas1.jpg"/>
+            <h1>#{titulo}</h1>
+            
+            <h:messages  globalOnly="true" layout="table" infoClass="info" 
+                     errorClass="error" />
+            <div style="color: red; font-family: cursive;font-size: 20px;"><em>Los datos obligatorios estan marcados con *</em></div>
+            <h:panelGrid columns="3" cellpadding="6" cellspacing="0" 
+                         columnClasses="etiquetas, normal" class="datagrid">
+                <h:outputLabel for="nombre" value="Nombre: *" accesskey="N" class="label"/>
+                <h:panelGroup>
+                    <h:inputText id="nombre" label="Nombre" maxlength="255" size="50" 
+                                 value="#{ctrlCita.modelo.nombre}"/>
+                    <div class="detalles"><em>1 a 255 caracteres</em></div>
+                </h:panelGroup>
+                <h:message for="nombre" errorClass="error"/>
+                
+                <h:outputLabel for="fechaNac" value="Fecha de nacimiento: *" class="label"
+                               accesskey="F"/>
+                <h:panelGroup>
+                    <h:inputText id="fechaNac" label="FechaNac" maxlength="10" size="13" 
+                                 value="#{ctrlCita.modelo.fechaNac}">
+                    <f:convertDateTime type="date" pattern="dd/MM/yyyy"
+                                 timeZone="America/Mexico_City"/>
+                    </h:inputText>
+                    <div class="detalles"><em>día/mes/año ej.: 26/09/1991</em></div>
+                </h:panelGroup>
+                <h:message for="nacimiento" errorClass="error"/>
+                
+                <h:outputLabel for="direccion" value="Dirección: " accesskey="D" class="label"/>
+                <h:panelGroup>
+                    <h:inputText id="direccion" label="direccion"
+                                 value="#{ctrlCita.modelo.direccion}" />
+                    <div class="detalles"><em>1 a 255 caracteres</em></div>
+                </h:panelGroup>
+                <h:message for="direccion" errorClass="error"/>
+                
+                <h:outputLabel for="consultorio" value="Consultorio: *" accesskey="C" class="label" />
+                <h:panelGroup>
+                    <h:inputText id="consultorio" label="consultorio" 
+                                 value="#{ctrlCita.modelo.consultorio}"/>
+                </h:panelGroup>
+                <h:message for="consultorio" errorClass="error"/>
+                
+                <h:outputLabel for="cita" value="Fecha de su cita: *" class="label"
+                         accesskey="C"/>
+                <h:panelGroup>
+                <h:inputText id="cita" label="Fecha de su cita: " 
+                         maxlength="16" size="19"
+                         value="#{ctrlCita.modelo.cita}">
+                <f:convertDateTime type="both" pattern="dd/MM/yyyy HH:mm"
+                                 timeZone="America/Mexico_City"/>
+                </h:inputText>
+                    <div class="detalles"><em>día/mes/año hora:minutos ej.: 26/09/2014 05:00</em></div>
+                </h:panelGroup>
+                <h:message for="cita" errorClass="error"/>
+
+                
+                <h:commandButton value="Guardar" accesskey="G" class="boton1"
+                                 action="#{ctrlCita.guarda()}" style="text-align: right"/>
+                <h:commandButton value="Cancelar" accesskey="C" class="boton1"
+                                 immediate="true"
+                                 action="#{ctrlCita.regresa()}"/>
+                
+            </h:panelGrid>
+        
+        </h:form>  
+    </h:body>
+</html>
+
